@@ -3,4 +3,6 @@
     <string name="app_name">Currency App</string>
     <string name="something_went_wrong">حدث خطأ ما</string>
     <string name="check_your_internet_connection">تحقق من أتصالك بالأنترنت</string>
+    <string name="amount">القيمة</string>
+    <string name="convert">حول</string>
 </resources>

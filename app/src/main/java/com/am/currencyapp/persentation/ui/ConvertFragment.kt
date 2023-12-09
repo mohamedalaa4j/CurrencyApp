@@ -9,12 +9,14 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.viewbinding.ViewBinding
+import com.am.currencyapp.data.remote.dto.LatestRatesResponse
 import com.am.currencyapp.databinding.FragmentConvertBinding
 import com.am.currencyapp.persentation.ui.dialog.LoadingDialog
 import com.am.currencyapp.persentation.viewmodel.ConvertViewModel
 import com.am.currencyapp.util.showToast
 import com.am.currencyapp.util.state.UiState
 import dagger.hilt.android.AndroidEntryPoint
+import kotlin.time.times
 
 @AndroidEntryPoint
 class ConvertFragment : BindingFragment<FragmentConvertBinding>() {
@@ -30,7 +32,7 @@ class ConvertFragment : BindingFragment<FragmentConvertBinding>() {
         fetchData()
     }
 
-    private fun fetchData(){
+    private fun fetchData() {
         fetchLatestRatesState()
     }
 
@@ -44,6 +46,12 @@ class ConvertFragment : BindingFragment<FragmentConvertBinding>() {
                             LoadingDialog.dismissDialog()
 
                             Log.e("dataFromApi", state.data?.rates.toString())
+
+                            val data = state.data
+
+                            data?.let {
+                                convert(it)
+                            }
                         }
 
                         is UiState.Error -> {
@@ -61,6 +69,18 @@ class ConvertFragment : BindingFragment<FragmentConvertBinding>() {
 
                 }
             }
+        }
+    }
+
+    private fun convert(data: LatestRatesResponse) {
+        binding.apply {
+            btn.setOnClickListener {
+                val input = etInput.text.toString().trim().toDouble()
+                val output = input * data.rates?.aED!!
+                etOutput.setText(output.toString())
+
+            }
+
         }
     }
 
