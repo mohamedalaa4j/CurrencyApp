@@ -5,6 +5,7 @@ import android.widget.Toast
 import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import com.am.currencyapp.R
+import com.am.currencyapp.domain.model.ErrorResponseModel
 import com.am.currencyapp.util.state.ApiState
 import com.am.currencyapp.util.state.UiText
 import com.google.gson.Gson
@@ -34,8 +35,8 @@ fun <T> toResultFlow(call: suspend () -> Response<T>): Flow<ApiState<T>> = flow 
 
         } else {
             val errorBody = response.errorBody()?.string()
-            val errorObject = Gson().fromJson(errorBody, ResultModel::class.java)
-            emit(ApiState.Error(UiText.DynamicString(errorObject.message)))
+            val errorObject = Gson().fromJson(errorBody, ErrorResponseModel::class.java)
+            emit(ApiState.Error(UiText.DynamicString(errorObject.error.info)))
             Log.e("networkResponse", "Failure\n $errorBody")
         }
 
