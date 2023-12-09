@@ -1,13 +1,17 @@
-package com.am.project.data.remote
+package com.am.currencyapp.data.remote
 
+import com.am.currencyapp.data.remote.dto.LatestRatesResponse
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 interface ApiService {
     companion object {
-        const val BASE_URL = "https://amtalek.com/amtalekadmin/public/api/"
+        const val BASE_URL = "http://data.fixer.io/api/"
     }
 
-    @GET("mobile/contact-us")
-    suspend fun contactUsInfo(): Response<ContactUsResponse>
+    @GET("latest")
+    suspend fun getLatestRates(
+        @Query("access_key") apiKey: String,
+    ): Response<LatestRatesResponse>
 }
