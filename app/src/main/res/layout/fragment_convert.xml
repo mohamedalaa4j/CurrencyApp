@@ -7,6 +7,35 @@
     android:paddingHorizontal="@dimen/_6sdp"
     tools:context=".persentation.ui.ConvertFragment">
 
+    <Spinner
+        android:id="@+id/spinner_from"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:allowClickWhenDisabled="true"
+        android:clickable="true"
+        android:paddingHorizontal="@dimen/_6sdp"
+        android:spinnerMode="dropdown"
+        android:textAlignment="viewStart"
+        app:layout_constraintEnd_toStartOf="@id/spinner_to"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <Spinner
+        android:id="@+id/spinner_to"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:allowClickWhenDisabled="true"
+        android:clickable="true"
+        android:paddingHorizontal="@dimen/_6sdp"
+        android:spinnerMode="dropdown"
+        android:textAlignment="viewStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/spinner_from"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_input"
         style="@style/TextInputLayoutStyle"
@@ -20,7 +49,7 @@
         app:hintEnabled="false"
         app:layout_constraintEnd_toStartOf="@id/til_output"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/spinner_from">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_input"
@@ -47,7 +76,7 @@
         app:hintEnabled="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/til_input"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/spinner_from">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_output"

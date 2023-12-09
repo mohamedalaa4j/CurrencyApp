@@ -3,6 +3,7 @@ package com.am.currencyapp.persentation.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.am.currencyapp.data.remote.dto.LatestRatesResponse
+import com.am.currencyapp.domain.model.CurrencyRate
 import com.am.currencyapp.domain.usecase.GetLatestRatesUseCase
 import com.am.currencyapp.util.state.Resource
 import com.am.currencyapp.util.state.UiState
@@ -20,8 +21,8 @@ class ConvertViewModel @Inject constructor(
     private val getLatestRatesUseCase: GetLatestRatesUseCase,
 ) : ViewModel() {
 
-    private val _getLatestRatesState = MutableStateFlow<UiState<LatestRatesResponse>>(UiState.Empty())
-    val getLatestRatesState: StateFlow<UiState<LatestRatesResponse>> = _getLatestRatesState
+    private val _getLatestRatesState = MutableStateFlow<UiState<List<CurrencyRate>>>(UiState.Empty())
+    val getLatestRatesState: StateFlow<UiState<List<CurrencyRate>>> = _getLatestRatesState
 
     private var getLatestRatesJob: Job? = null
 

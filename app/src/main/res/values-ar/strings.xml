@@ -5,4 +5,8 @@
     <string name="check_your_internet_connection">تحقق من أتصالك بالأنترنت</string>
     <string name="amount">القيمة</string>
     <string name="convert">حول</string>
+
+    <string name="from">من</string>
+    <string name="to">إلى</string>
+
 </resources>
