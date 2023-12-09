@@ -2,6 +2,8 @@ package com.am.currencyapp.di
 
 import com.am.currencyapp.data.remote.MyInterceptor
 import com.am.currencyapp.data.remote.ApiService
+import com.am.currencyapp.data.repository.RepositoryImpl
+import com.am.currencyapp.domain.repository.Repository
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
@@ -37,5 +39,11 @@ object AppModule {
             .writeTimeout(10, TimeUnit.SECONDS)
             .readTimeout(10, TimeUnit.SECONDS)
             .build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideRepository(apiService: ApiService): Repository {
+        return RepositoryImpl(apiService)
     }
 }

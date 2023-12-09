@@ -10,8 +10,13 @@ interface ApiService {
         const val BASE_URL = "http://data.fixer.io/api/"
     }
 
-    @GET("latest")
+//    @GET("latest")
+//    suspend fun getLatestRates(
+//        @Query("access_key") apiKey: String,
+//    ): Response<LatestRatesResponse>
+
+    @GET("latest?access_key=c9b3571aaf435febe44ad4094f60655c")
     suspend fun getLatestRates(
-        @Query("access_key") apiKey: String,
+//        @Query("access_key") apiKey: String,
     ): Response<LatestRatesResponse>
 }
