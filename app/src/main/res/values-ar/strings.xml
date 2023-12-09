@@ -9,4 +9,8 @@
     <string name="from">من</string>
     <string name="to">إلى</string>
 
+    <string name="please_enter_an_amount">منفضلك أدخل قيمة</string>
+    <string name="please_choose_current_to_convert_into">أختر عملة التحويل</string>
+
+
 </resources>

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingHorizontal="@dimen/_6sdp"
-    tools:context=".persentation.ui.ConvertFragment">
+    tools:context=".persentation.ui.screens.ConvertFragment">
 
     <Spinner
         android:id="@+id/spinner_from"
@@ -38,7 +38,6 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_input"
-        style="@style/TextInputLayoutStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_18sdp"
@@ -65,7 +64,6 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_output"
-        style="@style/TextInputLayoutStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_18sdp"
@@ -83,6 +81,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/_50sdp"
             android:hint="@string/amount"
+            android:enabled="false"
             android:inputType="number"
             android:textAlignment="viewStart"
             android:textColor="@color/black"

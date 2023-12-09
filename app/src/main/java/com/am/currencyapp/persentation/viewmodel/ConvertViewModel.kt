@@ -2,7 +2,6 @@ package com.am.currencyapp.persentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.am.currencyapp.data.remote.dto.LatestRatesResponse
 import com.am.currencyapp.domain.model.CurrencyRate
 import com.am.currencyapp.domain.usecase.GetLatestRatesUseCase
 import com.am.currencyapp.util.state.Resource

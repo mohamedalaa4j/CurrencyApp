@@ -1,7 +1,6 @@
-package com.am.currencyapp.persentation.ui
+package com.am.currencyapp.persentation.ui.screens
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.AdapterView
@@ -11,9 +10,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.viewbinding.ViewBinding
 import com.am.currencyapp.R
-import com.am.currencyapp.data.remote.dto.LatestRatesResponse
 import com.am.currencyapp.databinding.FragmentConvertBinding
 import com.am.currencyapp.domain.model.CurrencyRate
+import com.am.currencyapp.persentation.ui.BindingFragment
 import com.am.currencyapp.persentation.ui.adapter.SpinnerFromAdapter
 import com.am.currencyapp.persentation.ui.dialog.LoadingDialog
 import com.am.currencyapp.persentation.viewmodel.ConvertViewModel
@@ -52,7 +51,6 @@ class ConvertFragment : BindingFragment<FragmentConvertBinding>() {
                             LoadingDialog.dismissDialog()
 
                             val data = state.data
-
                             data?.let {
                                 setupSpinnerFrom()
                                 setupSpinnerTo(data)
@@ -94,6 +92,7 @@ class ConvertFragment : BindingFragment<FragmentConvertBinding>() {
                     val model = parent?.getItemAtPosition(position) as CurrencyRate
                     toCurrencyRate = model.rate
 
+                    binding.etOutput.setText("")
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -112,7 +111,6 @@ class ConvertFragment : BindingFragment<FragmentConvertBinding>() {
 
             spinnerFrom.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                    val model = parent?.getItemAtPosition(position) as CurrencyRate
 
                 }
 
@@ -123,15 +121,14 @@ class ConvertFragment : BindingFragment<FragmentConvertBinding>() {
         }
     }
 
-
     private fun setupConverting() {
         binding.apply {
             btn.setOnClickListener {
-                if (etInput.text.toString().isNullOrEmpty()){
-                    showToast("please enter an amount")
-                } else if(toCurrencyRate == -0.0){
-                    showToast("please choose current to convert into")
-                } else{
+                if (etInput.text.toString().isNullOrEmpty()) {
+                    showToast(getString(R.string.please_enter_an_amount))
+                } else if (toCurrencyRate == -0.0) {
+                    showToast(getString(R.string.please_choose_current_to_convert_into))
+                } else {
                     val input = etInput.text.toString().trim().toDouble()
                     val output = input * toCurrencyRate
                     etOutput.setText(output.toString())
